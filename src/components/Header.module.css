@@ -1,0 +1,95 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 64px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonsContainer>* {
+    margin-left: 1rem;
+}
+
+.buttonsContainer>*:first-child {
+    margin-left: 0;
+}
+
+.header {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid #e5e7eb;
+    color: #171717;
+}
+
+.header.dark {
+    background-color: rgba(10, 10, 10, 0.9);
+    border-bottom: 1px solid #374151;
+    color: #ededed;
+}
+
+.buttonsContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cvLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.header.dark .cvLink {
+    color: #9ca3af;
+}
+
+.cvIcon {
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.themeButton {
+    padding: 0.5rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: transparent;
+    border: none;
+    color: #4b5563;
+}
+
+.themeButton {
+    color: #4b5563;
+}
+
+.themeButton:hover {
+    background-color: #f3f4f6;
+}
+
+.header.dark .themeButton {
+    color: #9ca3af;
+}
+
+.header.dark .themeButton:hover {
+    background-color: #1f2937;
+}
