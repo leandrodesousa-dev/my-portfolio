@@ -20,3 +20,23 @@ body {
 #main-content {
     padding-top: 64px !important;
 }
+
+#main-content > :first-child {
+    margin-top: 0 !important;
+}
+
+.profile-description p {
+    font-size: 1.125rem; 
+    line-height: 1.6; 
+    margin-bottom: 1.5rem;
+}
+
+.profile-description p:first-child {
+    margin-top: 0 !important;
+}
+
+.landing-content-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 40px 40px 40px;
+}
