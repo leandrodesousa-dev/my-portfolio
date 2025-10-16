@@ -1,8 +1,8 @@
-import { getContentFromUntrustedAPI, getMarkdownContent } from '@/lib/md-to-html';
+import { getMarkdownFrontMatter, getRetrieveValidatedContent } from '@/lib/md-to-html';
 
 export default async function Home() {
-  const { frontMatter, contentHtml } = await getMarkdownContent();
-  const htmlSeguro = await getContentFromUntrustedAPI();
+  const htmlSeguro = await getRetrieveValidatedContent();
+  const { frontMatter } = getMarkdownFrontMatter();
 
   return (
     <div className="container mx-auto p-8 max-w-3xl">
