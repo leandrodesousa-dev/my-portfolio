@@ -3,9 +3,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Sun, Moon, FileText } from 'lucide-react';
 import styles from './Header.module.css';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
+    const pathname = usePathname(); 
+    const isActive = pathname.startsWith('/about');
+    const [theme, setTheme] = useState<'light' | 'dark' | undefined>(undefined); 
     const applyTheme = useCallback((currentTheme: 'light' | 'dark') => {
         const root = document.documentElement;
         if (currentTheme === 'dark') {
@@ -36,21 +39,29 @@ const Header = () => {
         applyTheme(newTheme);
     };
 
-    const seuNome = "Leandro de Sousa";
+    const myName = "Leandro de Sousa";
     const linkCV = "leandrodesousa_ios.pdf";
 
     return (
-       <header className={`${styles.header} ${theme === 'dark' ? styles.dark : ''}`}>
-            <div className={styles.container}> 
-               <h1 className="text-xl font-extrabold tracking-tight"> 
-                    {seuNome}
-                </h1>
-                 <div className={styles.buttonsContainer}>
+        <header className={`${styles.header} ${theme === 'dark' ? styles.dark : ''}`}>
+            <div className={styles.container}>
+                <a href="/" className={styles.logoLink}>
+                    <h1 className={styles.title}>
+                        {myName}
+                    </h1>
+                </a>
+                <div className={styles.buttonsContainer}>
+                    <a
+                        href="/about"
+                        className={styles.aboutLink} 
+                    >
+                        Sobre Mim
+                    </a>
                     <a
                         href={`/${linkCV}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={styles.cvLink} 
+                        className={styles.cvLink}
                     >
                         <FileText className={styles.cvIcon} />
                         CV
@@ -67,7 +78,7 @@ const Header = () => {
                     </button>
                 </div>
             </div>
-           <div className={styles.separator}></div>
+            <div className={styles.separator}></div>
         </header>
     );
 };

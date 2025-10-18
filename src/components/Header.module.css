@@ -93,3 +93,69 @@
 .header.dark .themeButton:hover {
     background-color: #1f2937;
 }
+
+.aboutLink {
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s, border-radius 0.3s;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--foreground); 
+}
+
+.aboutLink:hover, .aboutLink:focus {
+    color: #000000;
+    background-color: #f3f4f6;
+    outline: none;
+}
+
+.aboutLink:visited {
+    color: var(--foreground);
+}
+
+.activeLink {
+    background-color: #e5e7eb;
+    color: #000000;
+    font-weight: 600;
+}
+
+.header.dark .activeLink {
+    background-color: #374151;
+    color: #ffffff;
+}
+
+.activeLink:hover,
+.activeLink:focus {
+    background-color: #e5e7eb; 
+}
+
+.header.dark .activeLink:hover,
+.header.dark .activeLink:focus {
+    background-color: #374151;
+}
+
+.header.dark .aboutLink {
+    color: #9ca3af;
+}
+
+.header.dark .aboutLink:hover, 
+.header.dark .aboutLink:focus {
+    color: #ffffff;
+    background-color: #1f2937;
+}
+
+.logoLink {
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.logoLink:hover {
+    opacity: 0.8;
+}
+
+.title {
+    color: var(--foreground); 
+    font-size: 1.5rem;
+}
