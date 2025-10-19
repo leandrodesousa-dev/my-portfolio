@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/Header";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import HeaderClientWrapper from "@/components/HeaderClientWrapper"; 
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,25 +17,25 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Leandro de Sousa | Desenvolvedor iOS",
   description: "Desenvolvedor iOS Sênior.",
-  
+
   icons: {
     icon: [
       { url: '/icons/favicon.ico', sizes: 'any' },
       { url: '/icons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/icons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
-    
+
     apple: [
       { url: '/icons/apple-touch-icon.png', sizes: '180x180' },
     ],
-    
+
     other: [
-         { 
+      {
         rel: 'icon',
         url: '/icons/android-chrome-192x192.png',
         sizes: '192x192',
       },
-      { 
+      {
         rel: 'icon',
         url: '/icons/android-chrome-512x512.png',
         sizes: '512x512',
@@ -49,14 +50,36 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const storedTheme = localStorage.getItem('theme');
+                const isDark = storedTheme === 'dark' || 
+                               (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                if (isDark) {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.setAttribute('data-theme', 'light');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        <div id="main-content">
-        {children}
-        </div>
+        <ThemeProvider>
+          <HeaderClientWrapper /> 
+          <div id="main-content">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -3,6 +3,26 @@
   --foreground: #171717;
   --font-sans: var(--font-geist-sans); 
   --font-mono: var(--font-geist-mono); 
+  --header-bg-light: #ffffff; /* Fundo do Header Light */
+  --header-border-light: #e0e0e0;
+  --header-bg-dark: #171717; /* Fundo do Header Dark, ajuste conforme seu tema */
+  --header-border-dark: #374151;
+}
+
+.header {
+  background-color: var(--header-bg-light);
+  border-bottom: 1px solid var(--header-border-light);
+  transition: background-color 0.3s; /* Transição suave */
+}
+
+html.dark .header {
+  background-color: var(--header-bg-dark);
+  border-bottom: 1px solid var(--header-border-dark);
+}
+/* Se você usar o data-theme */
+html[data-theme="dark"] .header {
+  background-color: var(--header-bg-dark);
+  border-bottom: 1px solid var(--header-border-dark);
 }
 
 html.dark {
@@ -39,4 +59,8 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 40px 40px 40px;
+}
+
+body {
+  background: var(--background); /* Exposto quando 'html.dark' é perdido */
 }

@@ -1,46 +1,21 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
 import { Sun, Moon, FileText } from 'lucide-react';
-import styles from './Header.module.css';
 import { usePathname } from 'next/navigation';
+import { useTheme } from './ThemeProvider';
+import styles from './Header.module.css';
 
 const Header = () => {
     const pathname = usePathname(); 
     const isActive = pathname.startsWith('/about');
-    const [theme, setTheme] = useState<'light' | 'dark' | undefined>(undefined); 
-    const applyTheme = useCallback((currentTheme: 'light' | 'dark') => {
-        const root = document.documentElement;
-        if (currentTheme === 'dark') {
-            root.classList.add('dark');
-        } else {
-            root.classList.remove('dark');
-        }
-    }, []);
-
-    useEffect(() => {
-        const savedTheme = localStorage.getItem('theme');
-        let initialTheme: 'light' | 'dark';
-        if (savedTheme) {
-            initialTheme = savedTheme as 'light' | 'dark';
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            initialTheme = 'dark';
-        } else {
-            initialTheme = 'light';
-        }
-        setTheme(initialTheme);
-        applyTheme(initialTheme);
-    }, [applyTheme]);
-
-    const toggleTheme = () => {
-        const newTheme = theme === 'light' ? 'dark' : 'light';
-        setTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
-        applyTheme(newTheme);
-    };
+    const { theme, toggleTheme } = useTheme();
 
     const myName = "Leandro de Sousa";
     const linkCV = "leandrodesousa_ios.pdf";
+
+    if (theme === undefined) {
+        return null;
+    }
 
     return (
         <header className={`${styles.header} ${theme === 'dark' ? styles.dark : ''}`}>
@@ -53,7 +28,7 @@ const Header = () => {
                 <div className={styles.buttonsContainer}>
                     <a
                         href="/about"
-                        className={styles.aboutLink} 
+                        className={`${styles.aboutLink} ${isActive ? styles.activeLink : ''}`} 
                     >
                         Sobre Mim
                     </a>
@@ -69,6 +44,7 @@ const Header = () => {
                     <button
                         onClick={toggleTheme}
                         className={styles.themeButton}
+                        aria-label="Toggle Dark/Light Mode"
                     >
                         {theme === 'light' ? (
                             <Moon className="w-5 h-5" />

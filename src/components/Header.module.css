@@ -117,13 +117,13 @@
 
 .activeLink {
     background-color: #e5e7eb;
-    color: #000000;
+    color: #000000 !important; 
     font-weight: 600;
 }
 
 .header.dark .activeLink {
     background-color: #374151;
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .activeLink:hover,
