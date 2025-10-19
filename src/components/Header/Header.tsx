@@ -2,7 +2,7 @@
 
 import { Sun, Moon, FileText } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { useTheme } from './ThemeProvider';
+import { useTheme } from '../Theme/ThemeProvider';
 import styles from './Header.module.css';
 
 const Header = () => {
