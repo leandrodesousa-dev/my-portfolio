@@ -39,6 +39,8 @@ body {
 
 #main-content {
     padding-top: 64px !important;
+    padding-bottom: 40px;
+    min-height: calc(100vh - 120px); 
 }
 
 #main-content > :first-child {
