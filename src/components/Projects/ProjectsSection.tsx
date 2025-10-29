@@ -1,7 +1,6 @@
-// src/components/Projects/ProjectsSection.tsx
 import React from 'react';
 import ProjectCard from './ProjectCard';
-import { MOCK_PROJECTS, Project } from '@/data/mockProjects'; // 🔑 Importa os dados
+import { MY_PROJECTS, Project } from '@/data/myProjects';
 import styles from './Projects.module.css';
 
 interface ProjectsSectionProps {
@@ -23,10 +22,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
     );
 };
 
-// Componente que será usado na Landing Page
 export const DynamicProjectsSection = () => {
-    // Aqui você faria a chamada dinâmica para buscar seus dados reais
-    const projectsData = MOCK_PROJECTS; // Usando mockados por enquanto
+    const projectsData = MY_PROJECTS;
     
     return <ProjectsSection projects={projectsData} />;
 };
