@@ -26,7 +26,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             className={`${styles.card} ${isDark ? styles.cardDark : ''}`}
             aria-label={`Ver detalhes do projeto: ${project.title}`}
         >
-            {/* add imagens em /public/images/experience */}
             <div className={styles.imagePlaceholder}>
                 <Image 
                     src={project.imageUrl}
