@@ -1,11 +1,7 @@
-import Link from 'next/link';
 import React from 'react';
-//import { getSlugs } from '@/lib/md-utils';
-import { DynamicProjectsSection } from '@/components/Projects/ProjectsSection';
+import { ProjectsSection } from '@/components/Projects/ProjectsSection';
 
 export default async function LandingPage() {
-    //const slugs = getSlugs();
-
     return (
         <div className="landing-content-container">
             <section className="profile-description">
@@ -18,26 +14,8 @@ export default async function LandingPage() {
                 </p>
             </section>
             <div style={{ marginTop: '5px', marginBottom: '40px' }}> 
-                <DynamicProjectsSection />
+                <ProjectsSection />
             </div>
-            {/* <div style={{ marginTop: '30px', marginBottom: '80px' }}> 
-                <h2>Minhas Experiências</h2>
-                <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>
-                    {slugs.map((slug) => (
-                        <li key={slug} style={{ marginBottom: '10px' }}>
-                            <Link
-                                href={`/experience/${slug}`}
-                                style={{ color: '#4f46e5', textDecoration: 'underline' }}
-                            >
-                                {slug.replace(/-/g, ' ').toUpperCase()}
-                            </Link>
-                        </li>
-                    ))}
-                    {slugs.length === 0 && (
-                        <p style={{ color: '#aaa' }}>Nenhuma experiência encontrada. Crie um arquivo Markdown em /content/experiences.</p>
-                    )}
-                </ul>
-            </div> */}
         </div>
     );
 }

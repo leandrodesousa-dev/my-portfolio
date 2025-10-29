@@ -25,7 +25,7 @@ export default async function ExperiencePage({ params }: Params) {
 
   return (
     <div id="main-content">
-      <div className="container mx-auto p-8 max-w-3xl"> 
+      <div className="landing-content-container"> 
         <h1 className="text-4xl font-bold mb-4"> 
           {frontMatter.title || "Experiência"} 
         </h1> 

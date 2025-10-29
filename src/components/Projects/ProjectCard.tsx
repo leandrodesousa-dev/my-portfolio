@@ -18,7 +18,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
-    const projectLink = `/experience/${project.slug}`; 
+    const projectLink = `/experiences/${project.slug}`; 
 
     return (
         <a 
