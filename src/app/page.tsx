@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
-import { getSlugs } from '@/lib/md-utils';
+//import { getSlugs } from '@/lib/md-utils';
+import { DynamicProjectsSection } from '@/components/Projects/ProjectsSection';
 
 export default async function LandingPage() {
-    const slugs = getSlugs();
+    //const slugs = getSlugs();
 
     return (
         <div className="landing-content-container">
@@ -16,7 +17,10 @@ export default async function LandingPage() {
                     Seja bem-vindo ao meu espaço!
                 </p>
             </section>
-            <div style={{ marginTop: '30px', marginBottom: '80px' }}> 
+            <div style={{ marginTop: '5px', marginBottom: '40px' }}> 
+                <DynamicProjectsSection />
+            </div>
+            {/* <div style={{ marginTop: '30px', marginBottom: '80px' }}> 
                 <h2>Minhas Experiências</h2>
                 <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>
                     {slugs.map((slug) => (
@@ -33,7 +37,7 @@ export default async function LandingPage() {
                         <p style={{ color: '#aaa' }}>Nenhuma experiência encontrada. Crie um arquivo Markdown em /content/experiences.</p>
                     )}
                 </ul>
-            </div>
+            </div> */}
         </div>
     );
 }
