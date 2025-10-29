@@ -10,14 +10,6 @@ interface Params {
   };
 }
 
-export function generateStaticParams() {
-  const slugs = getSlugs();
-
-  return slugs.map(slug => ({
-    slug: slug,
-  }));
-}
-
 export default async function ExperiencePage({ params }: Params) {
   const { slug } = await params;
   const htmlSeguro = await getRetrieveValidatedContent(slug); 

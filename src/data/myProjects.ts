@@ -30,7 +30,7 @@ export const MY_PROJECTS: Project[] = [
     },
     {
         slug: 'shopper-app-ios',
-        title: 'Ferramentas de Automação Interna',
+        title: 'Shopper - Marketplace',
         description: 'Desenvolvimento de features (incluindo IOT) , refatoração para MVVM-C e CI/CD com Fastlane e Semaphore CI.',
         imageUrl: '/experience/experience_shopper.png',
         tags: ['Fastlane', 'DevOps', 'CI/CD', 'MVVM-C', 'IOT', 'GitFlow', 'CocoaPods']
@@ -54,6 +54,6 @@ export const MY_PROJECTS: Project[] = [
         title: 'Communy',
         description: 'Gestão do ciclo completo de distribuição (App Store/Firebase) , desenvolvimento de features e testes unitários (XCTest).',
         imageUrl: '/experience/experience_communy.png',
-        tags: ['App Store', 'Firebase App Distribution', 'CI/CD', 'CocoaPods', 'XCTest', 'Firebase Analytics']
+        tags: ['App Store', 'Firebase App Distribution', 'CI/CD', 'CocoaPods', 'XCTest', 'Firebase Analytics', 'RXSwift']
     },
 ];
