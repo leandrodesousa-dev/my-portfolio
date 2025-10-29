@@ -1,4 +1,4 @@
-# 🚀 Portfolio Pessoal - Leandro de Sousa
+# 🚀 Portfolio Pessoal
 
 ## Desenvolvedor iOS Sênior | Arquitetura & Liderança Técnica
 
@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-v14%2B-black)](https://nextjs.org/)
 
-Este é o portfólio pessoal e técnico de Leandro de Sousa, Desenvolvedor iOS Sênior. O projeto foi construído com Next.js (App Router) para máxima performance, tipagem rigorosa via TypeScript e um design moderno com suporte a Dark/Light Mode.
+Este é o meu portfólio pessoal e técnico, sou Desenvolvedor iOS Sênior. O projeto foi construído com Next.js (App Router) para máxima performance, tipagem rigorosa via TypeScript e um design moderno com suporte a Dark/Light Mode.
 
 ## ✨ Destaques do Projeto
 
@@ -36,9 +36,9 @@ O projeto segue as melhores práticas do Next.js App Router para desempenho e ma
 | **Estilização** | CSS Modules | Encapsulamento de estilos e performance. |
 | **Conteúdo** | Markdown | Gestão de conteúdo de experiências. |
 
-## 💡 Expertise Técnica (Baseado no CV)
+## 💡 Expertise Técnica
 
-O desenvolvimento deste portfólio reflete a experiência profissional do autor, com foco nas seguintes áreas de especialização em iOS:
+O desenvolvimento deste portfólio reflete na experiência profissional, com foco nas seguintes áreas de especialização em iOS:
 
 | Categoria | Tópicos de Especialização |
 | :--- | :--- |
@@ -61,8 +61,8 @@ Para rodar este projeto localmente, siga os passos abaixo:
 ### 1. Clonar o Repositório
 
 ```bash
-git clone [https://github.com/Seu-Usuario/Seu-Repo-Aqui.git](https://github.com/Seu-Usuario/Seu-Repo-Aqui.git)
-cd Seu-Repo-Aqui
+git clone git@github.com:leandrodesousa-dev/my-portfolio.git
+cd my-portfolio
 ```
 
 ### 2. Instalar Dependências
