@@ -4,7 +4,7 @@ export default function AboutPage() {
             <h1>Sobre Leandro de Sousa</h1>
             <section className="profile-description">
                 <p>
-                    Eu sou um Desenvolvedor iOS Sênior com mais de 6 anos de experiência focado em arquiteturas robustas e escaláveis, como MVVM-C e Clean Architecture.
+                    Eu sou um Desenvolvedor iOS Sênior com mais de 5 anos de experiência focado em arquiteturas robustas e escaláveis, como MVVM-C e Clean Architecture.
                     Minha trajetória inclui passagens por grandes instituições financeiras (Core Banking), onde atuei na otimização de sistemas de alta complexidade.
                 </p>
                 <p>
