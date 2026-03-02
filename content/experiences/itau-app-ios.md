@@ -3,7 +3,7 @@ title: "Itaú Empresas - Liderança Técnica e Arquitetura Mobile"
 architecture: "MVVM-C, VIPER, VIP"
 tags: "Liderança Técnica, Core Banking, Swift, MVVM-C, VIPER, Analytics, Acessibilidade"
 dateInitial: "2022-12-01"
-dateFinal: "2025-09-30"
+dateFinal: "2025-11-30"
 published: true
 ---
 
