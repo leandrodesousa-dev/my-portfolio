@@ -8,6 +8,13 @@ export interface Project {
 
 export const MY_PROJECTS: Project[] = [
     {
+        slug: 'c6bank-app-ios',
+        title: 'CoreBanking - C6 Bank',
+        description: 'Evolução arquitetural em iOS (MVP), modularização com Tuist e fortalecimento de governança técnica com testes (Quick/Nimble) e boas práticas organizacionais.',
+        imageUrl: '/experience/experience_c6bank.png',
+        tags: ['Core Banking', 'Swift', 'MVP', 'Modularização', 'Tuist', 'Governança Técnica', 'Quick', 'Nimble', 'SPM', 'Git', 'GitHub Copilot', 'Code Review']
+    },
+    {
         slug: 'itau-app-ios',
         title: 'CoreBanking - Itaú Empresas',
         description: 'Liderança técnica e arquitetura em iOS (MVVM-C/VIPER), modernização de analytics (GA4/DataDog) e otimização com Testes A/B.',
