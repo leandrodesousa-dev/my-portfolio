@@ -8,8 +8,8 @@ const nextConfig: NextConfig = {
     //     hostname: 'avatars.githubusercontent.com',
     //   },
     // ],
-    loader: 'default',
-    path: '/_next/image',
+    loader: "default",
+    path: "/_next/image",
     unoptimized: false,
   },
 };
