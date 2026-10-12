@@ -113,15 +113,15 @@
   color: var(--foreground);
 }
 
-.activeLink {
+.aboutLink.activeLink {
   background-color: #e5e7eb;
-  color: #000000 !important;
+  color: #000000;
   font-weight: 600;
 }
 
-.header.dark .activeLink {
+.header.dark .aboutLink.activeLink {
   background-color: #374151;
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .activeLink:hover,

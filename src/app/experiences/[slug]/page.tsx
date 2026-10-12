@@ -1,7 +1,6 @@
 import {
   getMarkdownFrontMatter,
   getRetrieveValidatedContent,
-  getSlugs,
 } from "@/lib/md-utils";
 
 interface Params {
@@ -24,6 +23,7 @@ export default async function ExperiencePage({ params }: Params) {
         <p className="text-xl text-gray-600 mb-8">
           {frontMatter.subtitle || "Detalhes do Projeto"}
         </p>
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Markdown HTML is sanitized by DOMPurify in getRetrieveValidatedContent before rendering. */}
         <div dangerouslySetInnerHTML={{ __html: htmlSeguro }} />
       </div>
     </div>

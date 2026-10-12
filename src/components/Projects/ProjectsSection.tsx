@@ -5,7 +5,7 @@ import styles from "./Projects.module.css";
 
 function cleanSlug(rawPath: string): string {
   let cleanedSlug = rawPath.split("/").pop();
-  if (cleanedSlug && cleanedSlug.endsWith(".md")) {
+  if (cleanedSlug?.endsWith(".md")) {
     cleanedSlug = cleanedSlug.replace(/\.md$/, "");
   }
   return cleanedSlug || "";

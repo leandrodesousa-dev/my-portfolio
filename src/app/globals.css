@@ -40,13 +40,13 @@ body {
 }
 
 #main-content {
-  padding-top: 64px !important;
+  padding-top: 64px;
   padding-bottom: 40px;
   min-height: calc(100vh - 120px);
 }
 
 #main-content > :first-child {
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 .profile-description p {
@@ -56,7 +56,7 @@ body {
 }
 
 .profile-description p:first-child {
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 .landing-content-container {

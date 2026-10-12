@@ -1,8 +1,8 @@
-import DOMPurify from "dompurify";
-import fs from "fs";
+import fs from "node:fs";
+import path from "node:path";
+import DOMPurify, { type WindowLike } from "dompurify";
 import matter from "gray-matter";
 import { JSDOM } from "jsdom";
-import path from "path";
 import { remark } from "remark";
 import html from "remark-html";
 
@@ -18,7 +18,7 @@ export function getSlugs() {
 function getParsedMarkdown(slug: string) {
   const fullPath = path.join(POSTS_PATH, `${slug}.md`);
   if (!fs.existsSync(fullPath)) {
-    throw new Error("Arquivo Markdown não encontrado: ${slug}.md");
+    throw new Error(`Arquivo Markdown não encontrado: ${slug}.md`);
   }
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -45,7 +45,7 @@ async function getMarkdownContentHtml(slug: string) {
 
 export async function getRetrieveValidatedContent(slug: string) {
   const window = new JSDOM("").window;
-  const purify = DOMPurify(window as any);
+  const purify = DOMPurify(window as WindowLike);
 
   const { contentHtml } = await getMarkdownContentHtml(slug);
   const conteudoSanitizado = purify.sanitize(contentHtml);

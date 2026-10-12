@@ -1,8 +1,8 @@
-import DOMPurify from "dompurify";
-import fs from "fs";
+import fs from "node:fs";
+import path from "node:path";
+import DOMPurify, { type WindowLike } from "dompurify";
 import matter from "gray-matter";
 import { JSDOM } from "jsdom";
-import path from "path";
 import { remark } from "remark";
 import html from "remark-html";
 
@@ -41,7 +41,7 @@ export function getMarkdownFrontMatter() {
 
 export async function getRetrieveValidatedContent() {
   const window = new JSDOM("").window;
-  const purify = DOMPurify(window as any);
+  const purify = DOMPurify(window as WindowLike);
 
   const { contentHtml } = await getMarkdownContentHtml();
   const conteudoSanitizado = purify.sanitize(contentHtml);

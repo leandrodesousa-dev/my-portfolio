@@ -1,5 +1,3 @@
-import React from "react";
-
 const themeInitializerScript = `
   (function() {
     const storedTheme = localStorage.getItem('theme');
@@ -18,10 +16,7 @@ const themeInitializerScript = `
 
 export function ThemeScript() {
   return (
-    <script
-      dangerouslySetInnerHTML={{
-        __html: themeInitializerScript,
-      }}
-    />
+    // biome-ignore lint/security/noDangerouslySetInnerHtml: Static application-owned script initializes the theme before rendering; no user input is interpolated.
+    <script dangerouslySetInnerHTML={{ __html: themeInitializerScript }} />
   );
 }
