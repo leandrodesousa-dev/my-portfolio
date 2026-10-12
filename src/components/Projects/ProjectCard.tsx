@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import type React from "react";
+import { useLanguage } from "@/components/Language/LanguageProvider";
 import { useTheme } from "../Theme/ThemeProvider";
 import styles from "./Projects.module.css";
 
@@ -16,6 +17,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const { texts } = useLanguage();
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const projectLink = `/experiences/${project.slug}`;
@@ -24,12 +26,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     <a
       href={projectLink}
       className={`${styles.card} ${isDark ? styles.cardDark : ""}`}
-      aria-label={`Ver detalhes do projeto: ${project.title}`}
+      aria-label={`${texts.details} ${project.title}`}
     >
       <div className={styles.imagePlaceholder}>
         <Image
           src={project.imageUrl}
-          alt={`Capa do projeto ${project.title}`}
+          alt={`${texts.cover} ${project.title}`}
           layout="fill"
           objectFit="cover"
           className={styles.projectImage}

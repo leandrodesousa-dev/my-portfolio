@@ -2,6 +2,7 @@
 
 import { Mail } from "lucide-react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
+import { useLanguage } from "@/components/Language/LanguageProvider";
 import { useTheme } from "../Theme/ThemeProvider";
 import styles from "./Footer.module.css";
 
@@ -22,6 +23,7 @@ const contacts = [
 ];
 
 const Footer = () => {
+  const { texts } = useLanguage();
   const { theme } = useTheme();
 
   return (
@@ -33,8 +35,8 @@ const Footer = () => {
       <div className={styles.separator}></div>
       <div className={styles.container}>
         <div className={styles.info}>
-          <h2 id="contact-title" className={styles.name} lang="en">
-            Contact
+          <h2 id="contact-title" className={styles.name}>
+            {texts.contact}
           </h2>
           <p className={styles.name}>{myName}</p>
           <a href={`mailto:${myEmail}`} className={styles.email}>
@@ -52,8 +54,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
-                aria-label={`${contact.name} (opens in a new tab)`}
-                lang="en"
+                aria-label={`${contact.name} (${texts.newTab})`}
               >
                 <Icon
                   size={20}

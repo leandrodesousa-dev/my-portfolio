@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "@/components/Footer/Footer";
 import HeaderClientWrapper from "@/components/Header/HeaderClientWrapper";
+import { LanguageProvider } from "@/components/Language/LanguageProvider";
 import { ThemeProvider } from "@/components/Theme/ThemeProvider";
 import { ThemeScript } from "@/components/Theme/ThemeScript";
+import { dictionaries } from "@/lib/i18n/dictionaries";
+import { getLocale } from "@/lib/i18n/server";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,10 +19,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Leandro de Sousa | Desenvolvedor iOS",
-  description: "Desenvolvedor iOS Sênior.",
-
+const sharedMetadata: Metadata = {
   icons: {
     icon: [
       { url: "/icons/favicon.ico", sizes: "any" },
@@ -44,24 +44,36 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export async function generateMetadata(): Promise<Metadata> {
+  const texts = dictionaries[await getLocale()];
+  return {
+    ...sharedMetadata,
+    title: `Leandro de Sousa | ${texts.role}`,
+    description: texts.description,
+  };
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          <HeaderClientWrapper />
-          <div id="main-content">{children}</div>
-          <Footer />
-        </ThemeProvider>
+        <LanguageProvider locale={locale}>
+          <ThemeProvider>
+            <HeaderClientWrapper />
+            <div id="main-content">{children}</div>
+            <Footer />
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,4 +1,7 @@
 import { MY_PROJECTS, type Project } from "@/data/myProjects";
+import { dictionaries } from "@/lib/i18n/dictionaries";
+import { localizeProject } from "@/lib/i18n/projects";
+import { getLocale } from "@/lib/i18n/server";
 import { getSlugs } from "@/lib/md-utils";
 import ProjectCard from "./ProjectCard";
 import styles from "./Projects.module.css";
@@ -34,7 +37,11 @@ async function getProjectDataFromSlugs() {
 }
 
 export const ProjectsSection = async () => {
-  const projects = await getProjectDataFromSlugs();
+  const locale = await getLocale();
+  const texts = dictionaries[locale];
+  const projects = (await getProjectDataFromSlugs()).map((project) =>
+    localizeProject(project, locale),
+  );
 
   if (projects.length === 0) {
     return (
@@ -43,9 +50,9 @@ export const ProjectsSection = async () => {
         aria-labelledby="experience-title"
       >
         <h2 id="experience-title" className={styles.sectionTitle}>
-          Professional Experience
+          {texts.experience}
         </h2>
-        <p>Professional experience will be available here soon.</p>
+        <p>{texts.emptyExperience}</p>
       </section>
     );
   }
@@ -56,10 +63,10 @@ export const ProjectsSection = async () => {
       aria-labelledby="experience-title"
     >
       <h2 id="experience-title" className={styles.sectionTitle}>
-        Professional Experience
+        {texts.experience}
       </h2>
 
-      <div className={styles.projectsGrid} lang="pt-BR">
+      <div className={styles.projectsGrid} lang={locale}>
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

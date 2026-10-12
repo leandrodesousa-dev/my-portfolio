@@ -1,41 +1,50 @@
 import type { Metadata } from "next";
 import { ProjectsSection } from "@/components/Projects/ProjectsSection";
+import { dictionaries } from "@/lib/i18n/dictionaries";
+import { getLocale } from "@/lib/i18n/server";
 import styles from "./page.module.css";
 
-const description =
-  "Senior iOS Engineer with 6+ years of experience building native iOS applications using Swift, UIKit, and SwiftUI, primarily in banking and financial technology.";
+export async function generateMetadata(): Promise<Metadata> {
+  const texts = dictionaries[await getLocale()];
+  return {
+    title: `Leandro de Sousa | ${texts.role}`,
+    description: texts.description,
+  };
+}
 
-export const metadata: Metadata = {
-  title: "Leandro de Sousa | Senior iOS Engineer",
-  description,
-};
-
-export default function LandingPage() {
+export default async function LandingPage() {
+  const locale = await getLocale();
+  const texts = dictionaries[locale];
   return (
     <>
       <a className={styles.skipLink} href="#home-content">
-        Skip to content
+        {texts.skip}
       </a>
-      <main id="home-content" className={styles.home} lang="en" tabIndex={-1}>
+      <main
+        id="home-content"
+        className={styles.home}
+        lang={locale}
+        tabIndex={-1}
+      >
         <section className={styles.hero} aria-labelledby="hero-title">
           <p className={styles.eyebrow}>Leandro de Sousa</p>
           <h1 id="hero-title" className={styles.heroTitle}>
-            Senior iOS Engineer
+            {texts.role}
           </h1>
-          <p className={styles.description}>{description}</p>
+          <p className={styles.description}>{texts.description}</p>
           <div className={styles.actions}>
             <a className={styles.primaryAction} href="#featured-projects">
-              View Projects
+              {texts.projects}
             </a>
             <a
               className={styles.secondaryAction}
               href="/leandrodesousa_ios.pdf"
               download
             >
-              Download CV
+              {texts.cv}
             </a>
             <a className={styles.secondaryAction} href="#contact">
-              Contact
+              {texts.contact}
             </a>
           </div>
         </section>
@@ -46,21 +55,19 @@ export default function LandingPage() {
           tabIndex={-1}
         >
           <h2 id="featured-projects-title" className={styles.sectionTitle}>
-            Featured Projects
+            {texts.featured}
           </h2>
-          <p className={styles.sectionIntro}>Personal software projects.</p>
+          <p className={styles.sectionIntro}>{texts.projectsIntro}</p>
           <article className={styles.project} aria-labelledby="pomodoro-title">
             <h3 id="pomodoro-title" className={styles.projectTitle}>
               MyPomodoro
             </h3>
-            <p className={styles.description}>
-              A native iOS application developed with SwiftUI.
-            </p>
+            <p className={styles.description}>{texts.pomodoro}</p>
             <a
               className={styles.repositoryLink}
               href="https://github.com/leandrodesousa-dev/my-pomodoro"
             >
-              View MyPomodoro on GitHub
+              {texts.repository}
             </a>
           </article>
         </section>

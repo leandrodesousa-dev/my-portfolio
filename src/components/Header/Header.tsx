@@ -2,10 +2,13 @@
 
 import { FileText, Moon, Sun } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/components/Language/LanguageProvider";
+import { LanguageSwitcher } from "@/components/Language/LanguageSwitcher";
 import { useTheme } from "../Theme/ThemeProvider";
 import styles from "./Header.module.css";
 
 const Header = () => {
+  const { texts } = useLanguage();
   const pathname = usePathname();
   const isActive = pathname.startsWith("/about");
   const { theme, toggleTheme } = useTheme();
@@ -25,14 +28,13 @@ const Header = () => {
         <a href="/" className={styles.logoLink}>
           <p className={styles.title}>{myName}</p>
         </a>
-        <nav className={styles.buttonsContainer} aria-label="Main navigation">
+        <nav className={styles.buttonsContainer} aria-label={texts.navigation}>
           <a
             href="/about"
-            lang="pt-BR"
             aria-current={isActive ? "page" : undefined}
             className={`${styles.aboutLink} ${isActive ? styles.activeLink : ""}`}
           >
-            Sobre Mim
+            {texts.about}
           </a>
           <a
             href={`/${linkCV}`}
@@ -40,14 +42,15 @@ const Header = () => {
             rel="noopener noreferrer"
             className={styles.cvLink}
           >
-            <FileText className={styles.cvIcon} />
+            <FileText className={styles.cvIcon} aria-hidden="true" />
             CV
           </a>
+          <LanguageSwitcher />
           <button
             type="button"
             onClick={toggleTheme}
             className={styles.themeButton}
-            aria-label="Toggle Dark/Light Mode"
+            aria-label={texts.theme}
           >
             {theme === "light" ? (
               <Moon size={20} aria-hidden="true" />

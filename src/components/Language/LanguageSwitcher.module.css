@@ -1,0 +1,21 @@
+.button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  color: var(--foreground);
+  background: var(--background);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}

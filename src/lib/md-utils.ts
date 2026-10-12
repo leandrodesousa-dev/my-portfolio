@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { JSDOM } from "jsdom";
 import { remark } from "remark";
 import html from "remark-html";
+import type { Locale } from "./i18n/locale";
 
 const POSTS_PATH = path.join(process.cwd(), "content/experiences");
 
@@ -15,8 +16,15 @@ export function getSlugs() {
     .map((file) => file.replace(/\.md$/, ""));
 }
 
-function getParsedMarkdown(slug: string) {
-  const fullPath = path.join(POSTS_PATH, `${slug}.md`);
+function getParsedMarkdown(slug: string, locale: Locale) {
+  if (!getSlugs().includes(slug)) {
+    throw new Error(`Unknown experience: ${slug}`);
+  }
+  const fullPath = path.join(
+    POSTS_PATH,
+    locale === "en" ? "en" : "",
+    `${slug}.md`,
+  );
   if (!fs.existsSync(fullPath)) {
     throw new Error(`Arquivo Markdown não encontrado: ${slug}.md`);
   }
@@ -27,13 +35,13 @@ function getParsedMarkdown(slug: string) {
   return { frontMatter, content };
 }
 
-export function getMarkdownFrontMatter(slug: string) {
-  const { frontMatter } = getParsedMarkdown(slug);
+export function getMarkdownFrontMatter(slug: string, locale: Locale = "pt-BR") {
+  const { frontMatter } = getParsedMarkdown(slug, locale);
   return { frontMatter };
 }
 
-async function getMarkdownContentHtml(slug: string) {
-  const { content } = getParsedMarkdown(slug);
+async function getMarkdownContentHtml(slug: string, locale: Locale) {
+  const { content } = getParsedMarkdown(slug, locale);
   const processedContent = await remark().use(html).process(content);
 
   const contentHtml = processedContent.toString();
@@ -43,11 +51,14 @@ async function getMarkdownContentHtml(slug: string) {
   };
 }
 
-export async function getRetrieveValidatedContent(slug: string) {
+export async function getRetrieveValidatedContent(
+  slug: string,
+  locale: Locale = "pt-BR",
+) {
   const window = new JSDOM("").window;
   const purify = DOMPurify(window as WindowLike);
 
-  const { contentHtml } = await getMarkdownContentHtml(slug);
+  const { contentHtml } = await getMarkdownContentHtml(slug, locale);
   const conteudoSanitizado = purify.sanitize(contentHtml);
   return conteudoSanitizado;
 }
